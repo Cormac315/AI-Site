@@ -15,8 +15,8 @@ export interface UserState {
 export function defaultSetting(): UserState {
   return {
     userInfo: {
-      avatar: 'https://raw.githubusercontent.com/Dooy/chatgpt-web-midjourney-proxy/main/src/assets/avatar.jpg',
-      name:  t('mjset.sysname'),//'AI绘图',
+      avatar: '@/assets/avatar.jpg',
+      name:  ('Cormac'),//'AI绘图',
       description: '欢迎访问 <a href="https://cormac.top" class="text-blue-500" target="_blank" >我的主页</a>',
     },
   }
