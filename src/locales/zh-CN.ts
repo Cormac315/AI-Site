@@ -261,8 +261,7 @@ export default {
 
     ,findVersion:'发现更新版本'
     ,yesLastVersion:'已是最新版本'
-    ,infoStar:' 欢迎到 <a  class="text-blue-600 dark:text-blue-500" href="https://gpt.cormac.top" target="_blank"> Cormac's GPT </a>，使用免费GPT3.5/4大模型！ </p><p>本站为Cormac的AI集成站不提供免费镜像，谢谢！'
-    ,setBtSaveChat:'仅保存会话'
+    ,infoStar:'免费GPT3.5和4 <a  class="text-blue-600 dark:text-blue-500" href="https://gpt.cormac.top" target="_blank"> Cormac's GPT </a>， </p><p>本网站是Cormac的AI集成网站，不提供免费镜像谢谢！'
     ,setBtSaveSys: '保存至系统'
 
     ,wsrvClose:'关闭 wsrv'
