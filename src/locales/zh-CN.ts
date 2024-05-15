@@ -261,7 +261,7 @@ export default {
 
     ,findVersion:'发现更新版本'
     ,yesLastVersion:'已是最新版本'
-    ,infoStar:'免费GPT3.5和4: <a  class="text-blue-600 dark:text-blue-500" href="https://github.com/Dooy/chatgpt-web-midjourney-proxy" target="_blank"> gpt.cormac.top </a>， </p><p>本站为Cormac的AI集成站，不提供免费镜像谢谢！'
+    ,infoStar:'免费GPT3.5和4: <a  class="text-blue-600 dark:text-blue-500" href="https://gpt.cormac.top" target="_blank"> gpt.cormac.top </a>， </p><p>本站为Cormac的AI集成站，不提供免费镜像谢谢！'
     ,setBtSaveChat:'仅保存会话'
     ,setBtSaveSys: '保存至系统'
 
