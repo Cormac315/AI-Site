@@ -261,7 +261,7 @@ export default {
 
     ,findVersion:'发现更新版本'
     ,yesLastVersion:'已是最新版本'
-    ,infoStar:'本站是Cormac的AI集成网站，非免费，如果想使用免费GPT3.5/4， </p><p>请访问: <a  class="text-blue-600 dark:text-blue-500" href="https://gpt.cormac.top" target="_blank"> Cormac's GPT </a>，另欢迎访问我的 <a  class="text-blue-600 dark:text-blue-500" href="https://cormac.top" target="_blank"> 个人主页 </a>'
+    ,infoStar:'本站是Cormac的AI集成网站，非免费，如果想使用免费GPT3.5/4，</p><p>请访问: <a  class="text-blue-600 dark:text-blue-500" href="https://gpt.cormac.top" target="_blank"> Cormac's GPT </a>，另欢迎访问我的 <a  class="text-blue-600 dark:text-blue-500" href="https://cormac.top" target="_blank"> 个人主页 </a>'
     ,setBtSaveChat:'仅保存会话'
     ,setBtSaveSys: '保存至系统'
 
