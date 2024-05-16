@@ -167,7 +167,7 @@ export default {
 
         "findVersion": "Güncellenmiş sürümü keşfet",
         "yesLastVersion": "Zaten en son sürümde",
-        "infoStar": 'Free GPT3.5 and 4: <a  class="text-blue-600 dark:text-blue-500" href="https://gpt.cormac.top" target="_blank"> gpt.cormac.top </a>, </p><p>This site is Cormac's AI integration station, no free mirror is provided. Thank you!',
+        "infoStar": 'Thank you!'，
         "setBtSaveChat": "Sadece sohbeti kaydet",
         "setBtSaveSys": "Sisteme kaydet",
         "wsrvClose": "wsrv'yi kapat",
