@@ -164,7 +164,7 @@ export default {
     "mSent": "전송",
     "findVersion": "최신 버전 찾기",
     "yesLastVersion": "최신 버전입니다",
-    "infoStar": "무료 GPT3.5 및 4: <a class="text-blue-600 dark:text-blue-500" href="https://gpt.cormac.top" target="_blank"> gpt.cormac.top </a>, </p><p>이 사이트는 Cormac의 AI 통합 스테이션으로, 무료 미러를 제공하지 않습니다. 감사합니다!",
+    "infoStar": '무료 GPT3.5 및 4: <a class="text-blue-600 dark:text-blue-500" href="https://gpt.cormac.top" target="_blank"> gpt.cormac。top </a>, </p><p>이 사이트는 Cormac의 AI 통합 스테이션으로, 무료 미러를 제공하지 않습니다. 감사합니다!',
     "setBtSaveChat": "대화만 저장",
     "setBtSaveSys": "시스템에 저장",
 
