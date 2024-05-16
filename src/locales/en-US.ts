@@ -169,7 +169,7 @@ export default {
 
   "findVersion": "Discover updated version",
   "yesLastVersion": "Already on the latest version",
-  "infoStar": ''，
+    "infoStar": '',
   "setBtSaveChat": "Save chat only",
   "setBtSaveSys": "Save to system",
   "wsrvClose": "Close wsrv",
