@@ -167,7 +167,7 @@ export default {
   "mSent": "Отправить",
   "findVersion": "Обнаружить обновленную версию",
   "yesLastVersion": "Уже последняя версия",
-  "infoStar": ""，
+  "infoStar": "спасибо!",
   "setBtSaveChat": "Сохранить только чат",
   "setBtSaveSys": "Сохранить в систему",
 
