@@ -34,10 +34,7 @@ async function fetchConfig() {
     
 
     const dd= await gptUsage();
-    config.value= {usage:dd.usage?`${dd.usage}`:'-'
-      ，remaining:dd.remaining?`${dd.remaining}`:'-'
-      ，hard_limit_usd:dd.hard_limit_usd?`${dd.hard_limit_usd}`:'-'
-      ， "apiModel": "ChatGPTAPI",
+    config.value= {usage:dd.usage?`${dd.usage}`:'-',remaining:dd.remaining?`${dd.remaining}`:'-',hard_limit_usd:dd.hard_limit_usd?`${dd.hard_limit_usd}`:'-',"apiModel": "ChatGPTAPI",
         "reverseProxy": "-",
         "timeoutMs": 100000,
         "socksProxy": "-",
