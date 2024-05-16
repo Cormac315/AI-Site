@@ -167,7 +167,7 @@ export default {
   "mSent": "Отправить",
   "findVersion": "Обнаружить обновленную версию",
   "yesLastVersion": "Уже последняя версия",
-  "infoStar": "Бесплатный GPT3.5 и 4: <a class="text-blue-600 dark:text-blue-500" href="https://gpt.cormac.top" target="_blank"> gpt.cormac.top </a>, </p><p> Этот сайт является станцией интеграции искусственного интеллекта Кормака, бесплатные зеркала не предоставляются. Спасибо!",
+  "infoStar": ""，
   "setBtSaveChat": "Сохранить только чат",
   "setBtSaveSys": "Сохранить в систему",
 
