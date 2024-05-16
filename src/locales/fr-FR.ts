@@ -167,7 +167,7 @@ export default {
 
         "findVersion": "Découvrir la version mise à jour",
         "yesLastVersion": "Déjà sur la dernière version",
-        "infoStar": 'GPT3.5 et 4 gratuits : <a class="text-blue-600 dark:text-blue-500" href="https://gpt.cormac.top" target="_blank"> gpt.cormac.top </a>, </p><p>Ce site est la station d'intégration AI de Cormac, aucun miroir gratuit n'est fourni. Merci!',
+        "infoStar": '',
         "setBtSaveChat": "Enregistrer le chat seulement",
         "setBtSaveSys": "Enregistrer dans le système",
         "wsrvClose": "Fermer wsrv",
