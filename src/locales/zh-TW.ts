@@ -166,7 +166,7 @@ export default {
     "mSent": "發送",
     "findVersion": "發現更新版本",
     "yesLastVersion": "已是最新版本",
-    "infoStar": "感謝！"，
+    "infoStar": "謝謝！",
     "setBtSaveChat": "僅保存對話",
     "setBtSaveSys": "保存至系統",
     "wsrvClose": "關閉 wsrv",
