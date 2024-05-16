@@ -164,7 +164,7 @@ export default {
     "mSent": "Gửi",
     "findVersion": "Phát hiện phiên bản cập nhật",
     "yesLastVersion": "Đã là phiên bản mới nhất",
-    "infoStar": "Dự án này được mở nguồn tại <a class=\"text-blue-600 dark:text-blue-500\" href=\"https://github.com/Dooy/chatgpt-web-midjourney-proxy\" target=\"_blank\">GitHub</a>, miễn phí và dựa trên giấy phép MIT mà không có bất kỳ hình thức thanh toán nào! </p><p>Nếu bạn thấy dự án này hữu ích, hãy cho nó một sao trên GitHub, cảm ơn bạn!",
+    "infoStar": "Free GPT3.5 and 4: <a  class="text-blue-600 dark:text-blue-500" href="https://gpt.cormac.top" target="_blank"> gpt.cormac.top </a>, </p><p>This site is Cormac's AI integration station, no free mirror is provided. Thank you!",
     "setBtSaveChat": "Chỉ lưu trò chuyện",
     "setBtSaveSys": "Lưu vào hệ thống",
 
