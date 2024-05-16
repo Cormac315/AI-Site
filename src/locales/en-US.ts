@@ -169,7 +169,7 @@ export default {
 
   "findVersion": "Discover updated version",
   "yesLastVersion": "Already on the latest version",
-  "infoStar": 'Free GPT3.5 and 4: <a class=\"text-blue-600 dark:text-blue-500\" href=\"https://gpt.cormac.top\" target=\"_blank\"> gpt.cormac.top </a>, </p><p>This site is Cormac's AI integration station, no free mirror is provided. Thank you!',
+  "infoStar": 'Free GPT3.5 and 4:  gpt.cormac.top .This site is Cormac's AI integration station, no free mirror is provided. Thank you!',
   "setBtSaveChat": "Save chat only",
   "setBtSaveSys": "Save to system",
   "wsrvClose": "Close wsrv",
