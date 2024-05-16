@@ -169,7 +169,7 @@ export default {
 
   "findVersion": "Discover updated version",
   "yesLastVersion": "Already on the latest version",
-  "infoStar": 'Free GPT3.5 and 4:  gpt.cormac.top .This site is Cormac's AI integration station, no free mirror is provided. Thank you!',
+  "infoStar": ''，
   "setBtSaveChat": "Save chat only",
   "setBtSaveSys": "Save to system",
   "wsrvClose": "Close wsrv",
