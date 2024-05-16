@@ -166,7 +166,7 @@ export default {
     "mSent": "發送",
     "findVersion": "發現更新版本",
     "yesLastVersion": "已是最新版本",
-    "infoStar": "此專案在 <a class=\"text-blue-600 dark:text-blue-500\" href=\"https://github.com/Dooy/chatgpt-web-midjourney-proxy\" target=\"_blank\">GitHub</a> 上以 MIT 協議開源，免費且沒有任何付費行為！ </p><p>如果你覺得這個專案對你有幫助，請在 GitHub 上給它一顆星，謝謝！",
+    "infoStar": "免費GPT3.5和4: <a class="text-blue-600 dark:text-blue-500" href="https://gpt.cormac.top" target="_blank"> gpt.cormac.top </a>， </p><p>本站為Cormac的AI集成站，不提供免費鏡像感謝！",
     "setBtSaveChat": "僅保存對話",
     "setBtSaveSys": "保存至系統",
     "wsrvClose": "關閉 wsrv",
