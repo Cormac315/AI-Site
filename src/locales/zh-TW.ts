@@ -60,6 +60,7 @@ export default {
     avatarLink: '頭貼連結',
     name: '名稱',
     description: '描述',
+    backgroundImage: '背景圖片',
     role: '角色設定',
     temperature: 'Temperature',
     top_p: 'Top_p',
@@ -186,7 +187,35 @@ export default {
     "micWhisper": "Whisper語音識別",
     "micAsr": "即時識別",
     "micRec": "開始錄音，請說話！2秒內無聲音將自動關閉",
-    "micRecEnd": "錄音已結束"
+    "micRecEnd": "錄音已結束",
+    subtle: '高清2倍'
+    ,creative: '高清2倍. 創意'
+    ,gpt_gx: 'GPTs 用 g-*',
+    "ideoabout": "有關 Ideogram",
+    "ideoserver": "Ideogram 伺服器",
+    "ideokeyPlaceholder": "Ideogram 的 API 金鑰（可選）",
+    "ideopls": "圖片描述提示詞",
+    "nohead": "不含",
+
+    klingabout: '可靈 相關',
+    klingserver: '可靈 接口地址',
+    klingkeyPlaceholder: '可靈 的API Key 可不填',
+    klingkey: '可靈 Key',
+    mode: '模式',
+    duration: '時長',
+    negative_prompt: '不含物體的文字放這裡',
+    std: '高性能',
+    pro: '高表現',
+    needImg: '請傳參考圖才生效！',
+    seed: '種子數字 1~2147483647',
+    klingInfo: '說明： <li>1. 高表現是3.5倍的價格</li> <li>2. 10秒是2倍的價格</li> <li>3. 尾幀必須有參考圖片才生效</li>'
+    ,"camera_type": "鏡頭",
+    "cnull": "智能配對",
+    "down_back": "下移拉遠",
+    "forward_up": "推進上移",
+    "right_turn_forward": "右旋推進",
+    "left_turn_forward": "左旋推進"
+
   },
   "mjset": {
     "server": "服務端",
@@ -274,6 +303,10 @@ export default {
     "no1m": "圖片大小不能超過1M",
     "imgExt": "圖片僅支持jpg,gif,png,jpeg格式",
     "setSync": "同步Midjourney和Suno",
+    "addGPTS": "新增 GPTs",
+    "addPlaceholder": "將 GPTs 的 gid 貼這裡 也可直接貼 GPTs 的鏈接",
+    "gidError": "未找到有效的 gid，请重新填寫",
+    "success3": "新增 GPTs 成功！"
   },
 	draw: {
 		qualityList: {
@@ -345,6 +378,7 @@ export default {
 		},
 		versionList: {
 			mjV6: "MJ V6",
+			mjV61: "MJ V6.1",
 			mjV52: "MJ V5.2",
 			mjV51: "MJ V5.1",
 			nijiV6: "Niji V6",
@@ -388,7 +422,67 @@ export default {
     "menuinfo": "Suno 音樂創作",
     "server": "Suno API 端點",
     "serverabout": "Suno 相關",
-    "setOpenKeyPlaceholder": "Suno API 的相關KEY；可不填"
+    "setOpenKeyPlaceholder": "Suno API 的相關KEY；可不填",
+
+    upMps: '上載音頻',
+    extend: '擴展',
+    extendFrom: '擴展自',
+    extendAt: '擴展始於',
+    fail: '失敗',
+    info: '說明：<br>上載音頻的持續時間必須在6秒到60秒之間'
 
    }
+   ,video:{
+    "menu": "視頻",
+    "menuinfo": "Luma及其他視頻創作",
+    "descpls": "視頻創作描述",
+    "lumaabout": "關於Luma",
+    "lumaserver": "Luma API端點",
+    "setOpenKeyPlaceholder": "Luma API金鑰，選填",
+    "generate": "生成視頻",
+    "nodata": "暫無可用視頻，請先生成！",
+    "selectimg": "選擇圖片",
+    "clear": "清除",
+    "plsInput": "請輸入內容！",
+    "submitSuccess": "提交成功！",
+    "process": "視頻生成中...",
+    "repeat": "重新獲取",
+
+    "lumainfo": "說明：<ul><li>1. Pro 和 relax 演示視頻都有水印的鏈接</li><li>2. Pro 無水印版本需要通過「下載按鈕」得到下載鏈接</li><li>3. Pro 得到的鏈接有時限；請及時保存 MP4 文件到本地</li><li>4. Pro 請在生成後的 30 分鐘內；將 MP4 保存到本地，渠道號也可能被封或者下線</li><li>5. Pro 當下載鏈接無效時會給出帶水印的視頻鏈接</li></ul>",
+    "runwayabout": "Runway 相關",
+    "runwayserver": "Runway 接口地址",
+    "setOpenKeyPlaceholder2": "Runway API 的key, 可不填",
+    "endImg": "尾幀圖",
+    "runwayinfo": "說明：<ul><li>1. Runway 圖片與視頻都有有效期</li><li>2. 請在生成視頻後 30 分鐘內將 MP4 保存到本地</li></ul>",
+    "nosup": "暫不支持",
+    "rwgen2": "版本: Gen-2, 價格實惠",
+    "rwgen3": "版本: Gen-3 Alpha",
+    "repeat2":"Expired.Reget",
+    
+    rwgen3turbo:'版本: Gen-3 Alpha Turbo',
+    gen3a_turbo_img:'Gen-3 Alpha Turbo 必须带图',
+  },
+  dance:{
+    menu: "跳舞",
+    menuinfo: "使用 Viggle 等創作舞蹈影片。",
+    character: "人物角色",
+    viggleabout: "關於 Viggle",
+    viggleserver: "Viggle API 接口地址",
+    setOpenKeyPlaceholder: "Viggle API 的 key，可選填",
+    info: "說明：<br>1. 角色圖片最好是全身照片。<br>2. 舞蹈模板影片最好是個人影片，不要是團體舞蹈。",
+    model: "模型",
+    bgw: "白色背景",
+    bgg: "綠色背景",
+    bgmoban: "模板背景",
+    bgrole: "角色背景",
+    gring: "生成中...",
+    uprolefirst: "請先上傳角色圖片",
+    uprolefail: "上傳失敗",
+    upvideo: "+ 上傳模板跳舞影片",
+    usevideo: "+ 使用官方模板",
+    moban: "跳舞模板",
+    moban2: "模板名稱",
+    use: "使用"
+}
+
 }

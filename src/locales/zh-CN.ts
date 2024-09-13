@@ -60,6 +60,7 @@ export default {
     avatarLink: '头像链接',
     name: '名称',
     description: '描述',
+    backgroundImage: '背景图片',
     role: '角色设定',
     temperature: 'Temperature',
     top_p: 'Top_p',
@@ -184,6 +185,12 @@ export default {
     ,no1m:'图片大小不能超过{m}M'
     ,imgExt:'图片仅支持jpg,gif,png,jpeg格式'
     ,setSync:'同步Midjourney、Suno设置'
+
+    ,addGPTS:'新增GPTs'
+    ,addPlaceholder:'将GPTs的gid贴这儿 也可直接贴gpts的链接'
+    ,gidError:'未找到有效的gid，请重新填写'
+    ,success3:'新增GPTs成功！'
+
   },
   mj:{
     setOpen:'OpenAI 相关',
@@ -288,8 +295,35 @@ export default {
     ,micRec:'开始录音,请说话！2秒内无声音将自动关闭'
     ,micRecEnd:'录音已结束'
 
-    
+    ,subtle:'高清2倍'
+    ,creative:'高清2倍.创意'
+    ,gpt_gx:'GPTs用g-*'
 
+    ,ideoabout:'Ideogram 相关'
+    ,ideoserver:'Ideogram 接口地址'
+    ,ideokeyPlaceholder:'Ideogram 的API Key 可不填'
+    ,ideopls:'图片描述 提示词'
+    ,nohead:'不含'
+
+    ,klingabout:'可灵 相关'
+    ,klingserver:'可灵 接口地址'
+    ,klingkeyPlaceholder:'可灵 的API Key 可不填'
+    ,klingkey:'可灵 Key'
+    ,mode:'模式'
+    ,duration:'时长'
+    ,negative_prompt:'不含物体的文字放这儿'
+    ,std:'高性能'
+    ,pro:'高表现'
+    ,needImg:'请传参考图才生效！'
+    ,seed:'种子数字 1~2147483647'
+    ,klingInfo:'说明： <li>1. 高表现是3.5倍的价格</li>  <li>2. 10s是2倍的价格</li> <li>3. 尾帧必须有参考图片才生效</li>'
+
+    ,camera_type:'镜头'
+    ,cnull:'智能匹配'
+    ,down_back: '下移拉远'
+    ,forward_up: '推进上移'
+    ,right_turn_forward: '右旋推进'
+    ,left_turn_forward: '左旋推进'
   },
 
 	draw: {
@@ -362,6 +396,7 @@ export default {
 		},
 		versionList: {
 			mjV6: "MJ V6",
+			mjV61: "MJ V6.1",
 			mjV52: "MJ V5.2",
 			mjV51: "MJ V5.1",
 			nijiV6: "Niji V6",
@@ -407,6 +442,73 @@ export default {
     ,server:'Suno 接口地址'
     ,serverabout:'Suno 相关'
     ,setOpenKeyPlaceholder:'Suno API 的相关KEY；可不填'
+
+    ,upMps:'上传音频'
+    ,extend:'延伸'
+    ,extendFrom:'延伸于'
+    ,extendAt:'延伸开始于'
+    ,fail:'失败'
+    ,info:'说明:<br>上传音频时长必须在6s-60s内'
+    ,lyricsFail:'获取歌曲失败'
+  }
+  ,video:{
+    menu:"视频",
+    menuinfo:'Luma等 视频创作',
+    descpls:'视频创作描述',
+    lumaabout:"Luma 相关",
+    lumaserver:"Luma 接口地址",
+    setOpenKeyPlaceholder:'Luma API 的key, 可不填',
+    generate:'生成视频',
+    nodata:'暂无可用视频，请先生成！',
+    selectimg:'参考图片',
+    clear:'清除',
+    plsInput:'请输入内容！',
+    submitSuccess:'已提交成功！',
+    process:'视频生成中...',
+    repeat:'重新获取',
+    pending:'状态:队列中',
+    processing:'状态:生产中',
+    failed:'状态:生成失败！',
+    download:'下载',
+    extend:'延展',
+
+    lumainfo:'说明：<ul><li>1.pro与relax演示视频都是有水印的链接</li><li>2.pro无水印版本需要通过“下载按钮”得到下载链接</li><li>3.pro得到的链接有时限；请及时保存mp4文件到本地</li><li>4.pro请在生成后的30分钟内；将mp4保存到本地，渠道号也可能被封或者下线</li> <li>5.pro当下载链接无效时会给出带水印的视频链接</li></ul>',
+    runwayabout:'Runway 相关',
+    runwayserver:'Runway 接口地址',
+    setOpenKeyPlaceholder2:'Runway API 的key, 可不填',
+    endImg:'尾帧图',
+    runwayinfo:'说明：<ul><li>1. Runway 图片与视频都有有效期</li>  <li>2. 请在生成视频后30分钟内将mp4保存到本地</li>  <li>3. 过期重新获取，可能存在账号下线而获取失败</li><li>4. Gen3A Turbo 必须带图</li></ul>',
+    nosup:'暂不支持',
+    rwgen2:'版本: Gen-2, 价格实惠',
+    rwgen3:'版本: Gen-3 Alpha',
+    rwgen3fast:'版本: Gen-3 Alpha Fast',
+    repeat2:'过期.重新获取',
+
+    rwgen3turbo:'版本: Gen-3 Alpha Turbo',
+    gen3a_turbo_img:'Gen-3 Alpha Turbo 必须带图',
+
+  }
+  ,dance:{
+    menu:"舞蹈",
+    menuinfo:'Viggle等 舞蹈视频创作'
+    ,character:'人物角色'
+    ,viggleabout:"Viggle 相关",
+    viggleserver:"Viggle 接口地址",
+    setOpenKeyPlaceholder:'Viggle API 的key, 可不填',
+    info:'说明:<br>1.角色图片最好是个人全身照片<br>2.舞蹈模版视频最好是个人视频 别传群舞',
+    model:'模型',
+    bgw:'白色背景',
+    bgg:'绿色背景',
+    bgmoban:'模版背景',
+    bgrole:'角色背景',
+    gring:'生成中...',
+    uprolefirst:'请先上传角色图片',
+    uprolefail:'上传失败',
+    upvideo:'+上传模版舞蹈视频',
+    usevideo:'+使用官网模版',
+    moban:'舞蹈模版',
+    moban2:'模版名称',
+    use:'使用',
   }
 
 

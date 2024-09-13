@@ -5,7 +5,8 @@ import {  gptConfigStore, homeStore, useAppStore, useChatStore } from '@/store'
 import { useBasicLayout } from '@/hooks/useBasicLayout'
 import {NModal} from "naive-ui"
 import aiModel from "@/views/mj/aiModel.vue"
-import { chatSetting } from '@/api'
+import { chatSetting, mlog } from '@/api'
+import { debounce } from '@/utils/functions/debounce'
 
 const { isMobile } = useBasicLayout()
 
@@ -47,10 +48,15 @@ function handleClear() {
 }
 const uuid = chatStore.active;
 const chatSet = new chatSetting( uuid==null?1002:uuid);
-const nGptStore = ref( chatSet.getGptConfig())  ;
+const nGptStore = ref()  ;
+nGptStore.value=  chatSet.getGptConfig() ;
 const st = ref({isShow:false});
-watch(()=>gptConfigStore.myData,()=>nGptStore.value=  chatSet.getGptConfig() , {deep:true})
-watch(()=>homeStore.myData.act,(n)=> n=='saveChat' && (nGptStore.value=  chatSet.getGptConfig() ), {deep:true})
+//导致卡死的原因 当删除时触发 切换 uuid 这个地方会删除的uuid 跟新uuid 一直却换
+watch(()=>gptConfigStore.myData,debounce( ()=>{
+  mlog("toMyuid19","watch gptConfigStore.myData ",  chatStore.active  )
+  nGptStore.value=  chatSet.getGptConfig() 
+},600 ), {deep:true})
+watch(()=>homeStore.myData.act,debounce( (n)=> n=='saveChat' && (nGptStore.value=  chatSet.getGptConfig() ),600), {deep:true})
 </script>
 
 <template>
@@ -86,6 +92,7 @@ watch(()=>homeStore.myData.act,(n)=> n=='saveChat' && (nGptStore.value=  chatSet
     </div>
     
     <div @click="st.isShow=true" class="absolute left-1/2   top-full -translate-x-1/2 cursor-pointer select-none rounded-b-md border  bg-white px-2 dark:border-neutral-800 dark:bg-[#111114]">
+    <!-- <div @click="st.isShow=true" class="absolute left-1/2   top-full -translate-x-1/2 cursor-pointer select-none rounded-b-md px-2"> -->
         <div class="flex items-center   justify-center space-x-1 cursor-pointer hover:text-[#4b9e5f]" v-if="homeStore.myData.local!='draw'">
             <template   v-if="nGptStore.gpts">
              <SvgIcon icon="ri:apps-fill" /> 

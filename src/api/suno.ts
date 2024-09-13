@@ -5,7 +5,9 @@ import { sunoStore,SunoMedia } from "./sunoStore";
 const getUrl=(url:string)=>{
     if(url.indexOf('http')==0) return url;
     if(gptServerStore.myData.SUNO_SERVER){
-        return `${ gptServerStore.myData.SUNO_SERVER}${url}`;
+        if( gptServerStore.myData.SUNO_SERVER.indexOf('suno')>0 ) return `${ gptServerStore.myData.SUNO_SERVER}${url}`;
+
+        return `${ gptServerStore.myData.SUNO_SERVER}/suno${url}`;
     }
     return `/sunoapi${url}`;
 }
@@ -40,6 +42,7 @@ export const lyricsFetch= async ( lid:string)=>{
         let time= (i+1)
         if(time>20) time=20;
         if(dt.status=='complete') return dt ;
+        if( dt.status=='error') return null;
         await sleep( time*1000 )
         
     }
@@ -67,12 +70,12 @@ export const FeedTask= async (ids:string[])=>{
     mlog('FeedTask',d )
     d.forEach( (item:SunoMedia) =>{
          sunoS.save( item)
-        if(item.status== "complete"){
+        if(item.status== "complete" || item.status== "error" ){
             ids= ids.filter(v=>v!=item.id )
         }
     });
     homeStore.setMyData({act:'FeedTask'});
-    await sleep(5*1000 );
+    await sleep(5*1020 );
     FeedTask(ids)
 
 }

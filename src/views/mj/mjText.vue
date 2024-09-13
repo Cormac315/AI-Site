@@ -158,16 +158,21 @@ const bt= [
     ,{k:'pan_down',n:t('mj.pan_down')}
     ,{k:'reroll::0',n: t('mjchat.reroll')}
     ,{k:'upsample_v5_2x',n:t('mj.up2')}
-    ,{k:'upsample_v6_2x',n:t('mj.up2')}
     ,{k:'upsample_v5_4x',n:t('mj.up4')} 
-    ,{k:'upsample_v6_4x',n:t('mj.up4')} 
+    ,{k:'upsample_v6_2x_subtle',n:t('mj.subtle')}//t('mj.up2') 'Subtle'
+    ,{k:'upsample_v6_2x_creative',n:t('mj.creative')}  //'Creative'
     ]
 ]
 
 const getIndex = (arr:any[], ib:any )=> arr.findIndex( (v9:any)=>v9.customId.indexOf(ib.k)>-1 ) ;
 const getIndexName=  (arr:any[], ib:any )=> {
   const i= getIndex( arr,ib);
-  if(ib.k=='upsample_v5_2x') return ib.n;
+  if(ib.k=='upsample_v5_2x') return ib.n; 
+
+  if(ib.k=='upsample_v5_4x') return ib.n;
+  //if(ib.k=='upsample_v6_4x') return ib.n;
+  if(ib.k.indexOf('upsample_v6_2x')>-1 ) return ib.n;
+
   return `${arr[i].emoji} ${ib.n}`;
 }
 
@@ -229,8 +234,10 @@ load();
 </script>
 <template>
 <div v-if="st.isLoadImg">
-    
-    <template   v-if="chat.opt?.progress">
+    <div v-if="chat.opt?.status=='FAILURE'"> 
+        <div>{{ $t('mjchat.failReason') }}<p>{{ chat.opt?.failReason }}</p></div>
+    </div>
+    <template  v-else-if="chat.opt?.progress">
         <div v-if="chat.opt?.action=='SHORTEN'" class="markdown-body" v-html="text" > 
              
         </div> 
@@ -269,9 +276,6 @@ load();
         <div v-else class="py-2"> {{ $t('mjchat.wait') }}</div>
         <!-- <div v-html="chat.opt?.action"></div> -->
     </template>
-    <div v-else-if="chat.opt?.status=='FAILURE'"> 
-        <div>{{ $t('mjchat.failReason') }}<p>{{ chat.opt?.failReason }}</p></div>
-    </div>
     <div v-else> 
      {{ $t('mjchat.wait2',{id:chat.mjID}) }}
         <div v-if="!chat.loading"> <NButton type="primary" @click="reload()">{{ $t('mjchat.reload') }}</NButton></div>

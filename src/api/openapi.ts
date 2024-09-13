@@ -8,6 +8,9 @@ import { isNumber, isObject } from "@/utils/is";
 import { t } from "@/locales";
 import { ChatMessage } from "gpt-tokenizer/esm/GptEncoding";
 import { chatSetting } from "./chat";
+import { MessageApiInjection } from "naive-ui/es/message/src/MessageProvider";
+import { ideoSubmit } from "./ideo";
+import { error } from "console";
 //import {encode,  encodeChat}  from "gpt-tokenizer"
 //import {encode,  encodeChat} from "gpt-tokenizer/cjs/encoding/cl100k_base.js";
 //import { get_encoding } from '@dqbd/tiktoken'
@@ -21,12 +24,21 @@ export const KnowledgeCutOffDate: Record<string, string> = {
   "gpt-4-vision-preview": "2023-04",
   "gpt-4-turbo-2024-04-09": "2023-12", 
   "gpt-4o-2024-05-13": "2023-10", 
+  "o1-preview-2024-09-12": "2023-10", 
+  "o1-preview": "2023-10", 
+  "o1-mini": "2023-10", 
+  "o1-mini-2024-09-12": "2023-10", 
   "gpt-4o": "2023-10", 
+  "gpt-4o-mini": "2023-10", 
+  "gpt-4o-mini-2024-07-18": "2023-10", 
+  "gpt-4o-2024-08-06": "2023-10", //chatgpt-4o-latest
+  "chatgpt-4o-latest": "2023-10", 
   "gpt-4-turbo": "2023-12", 
   "gpt-4-turbo-preview": "2023-12",
   "claude-3-opus-20240229": "2023-08",
   "claude-3-sonnet-20240229": "2023-08",
   "claude-3-haiku-20240307": "2023-08",
+  "claude-3-5-sonnet-20240620": "2024-04",
   "gemini-pro": "2023-12",
   "gemini-pro-vision": "2023-12",
   "gemini-pro-1.5": "2024-04"
@@ -208,8 +220,26 @@ export const subGPT= async (data:any, chat:Chat.Chat )=>{
    let d:any;
    let action= data.action;
    //chat.myid=  `${Date.now()}`;
-   if(  action=='gpt.dall-e-3' ){ //执行变化
+   if(  action=='gpt.dall-e-3' && data.data && data.data.model && data.data.model.indexOf('ideogram')>-1 ){ //ideogram
+         mlog("ddlog 数据 ", data.data  )
+         try{
+            let d= await ideoSubmit(data.data );
+            mlog("ddlog 数据返回 ", d  )
+             const rz = d[0];
+            chat.text= rz.prompt//rz.p??`图片已完成`;
+            chat.opt={imageUrl:rz.url } ;
+            chat.loading = false;
+            homeStore.setMyData({act:'updateChat', actData:chat });
+
+         }catch(e){
+            //chat.text='失败！'+"\n```json\n"+JSON.stringify(d, null, 2)+"\n```\n";
+            chat.text='失败！'+"\n```json\n"+   e  +"\n```\n";
+            chat.loading=false;
+            homeStore.setMyData({act:'updateChat', actData:chat });
+         }
+   }else if(  action=='gpt.dall-e-3' ){ //执行变化
        // chat.model= 'dall-e-3';
+       
 
        let d= await gptFetch('/v1/images/generations', data.data);
        try{
@@ -219,7 +249,8 @@ export const subGPT= async (data:any, chat:Chat.Chat )=>{
             chat.loading = false;
             homeStore.setMyData({act:'updateChat', actData:chat });
        }catch(e){
-            chat.text='失败！'+"\n```json\n"+JSON.stringify(d, null, 2)+"\n```\n";
+            //chat.text='失败！'+"\n```json\n"+JSON.stringify(d, null, 2)+"\n```\n";
+            chat.text='失败！'+"\n```json\n"+ (d?JSON.stringify(d, null, 2):e) +"\n```\n";
             chat.loading=false;
             homeStore.setMyData({act:'updateChat', actData:chat });
        }
@@ -228,9 +259,17 @@ export const subGPT= async (data:any, chat:Chat.Chat )=>{
 
 }
 
+export const isDallImageModel =(model:string|undefined)=>{
+    if(!model) return false;
+    if( model.indexOf('flux')>-1 ) return true; 
+    if( model.indexOf('ideogram')>-1 ) return true; 
+    return ['dall-e-2' ,'dall-e-3','ideogram' ].indexOf(model)>-1
+      
+}
+
 interface subModelType{
     message:any[]
-    onMessage:(d:{text:string,isFinish:boolean})=>void
+    onMessage:(d:{text:string,isFinish:boolean,isAll?:boolean})=>void
     onError?:(d?:any)=>void
     signal?:AbortSignal
     model?:string
@@ -270,8 +309,14 @@ export const getSystemMessage = (uuid?:number )=>{
     let producer= 'You are ChatGPT, a large language model trained by OpenAI.'
     if(model.includes('claude')) producer=  'You are Claude, a large language model trained by Anthropic.';
     if(model.includes('gemini')) producer=  'You are Gemini, a large language model trained by Google.';
-      const DEFAULT_SYSTEM_TEMPLATE = `${producer}
-Knowledge cutoff: ${KnowledgeCutOffDate[model]??KnowledgeCutOffDate.default}
+    //用户自定义系统
+    if(homeStore.myData.session.systemMessage )  producer= homeStore.myData.session.systemMessage
+    
+    let DEFAULT_SYSTEM_TEMPLATE = `${producer}`;
+
+if ( KnowledgeCutOffDate[model] || model.indexOf('gpt-')>-1 )DEFAULT_SYSTEM_TEMPLATE+=`
+Knowledge cutoff: ${KnowledgeCutOffDate[model]??KnowledgeCutOffDate.default}`
+DEFAULT_SYSTEM_TEMPLATE+=`
 Current model: ${model}
 Current time: ${ new Date().toLocaleString()}
 Latex inline: $x^2$
@@ -279,9 +324,13 @@ Latex block: $$e=mc^2$$`;
 return DEFAULT_SYSTEM_TEMPLATE;
 
 }
+
+export const isNewModel=(model:string)=>{
+    return model.startsWith('o1-')
+}
 export const subModel= async (opt: subModelType)=>{
     //
-    const model= opt.model?? ( gptConfigStore.myData.model?gptConfigStore.myData.model: "gpt-3.5-turbo");
+    let model= opt.model?? ( gptConfigStore.myData.model?gptConfigStore.myData.model: "gpt-3.5-turbo");
     let max_tokens= gptConfigStore.myData.max_tokens;
     let temperature= 0.5;
     let top_p= 1;
@@ -297,7 +346,12 @@ export const subModel= async (opt: subModelType)=>{
     }
     if(model=='gpt-4-vision-preview' && max_tokens>2048) max_tokens=2048;
 
-    let body ={
+    //gptServerStore.myData.GPTS_GX
+    if( gptServerStore.myData.GPTS_GX ){
+        model= model.replace('gpt-4-gizmo-','')
+    }
+
+    let body:any ={
             max_tokens ,
             model ,
             temperature,
@@ -306,8 +360,18 @@ export const subModel= async (opt: subModelType)=>{
             "messages": opt.message
            ,stream:true
         }
-        //
-
+    if(isNewModel(model)){
+        body ={
+            max_completion_tokens:max_tokens ,
+            model ,
+            //temperature,
+            top_p,
+            presence_penalty ,frequency_penalty,
+            "messages": opt.message
+           ,stream:false
+        }
+    }
+    if(body.stream){ 
         let  headers ={
                 'Content-Type': 'application/json'
                 //,'Authorization': 'Bearer ' +gptServerStore.myData.OPENAI_API_KEY
@@ -316,29 +380,42 @@ export const subModel= async (opt: subModelType)=>{
         headers={...headers,...getHeaderAuthorization()}
 
         try {
-         await fetchSSE( gptGetUrl('/v1/chat/completions'),{
-            method: 'POST',
-            headers: headers,
-            signal:opt.signal,
-            onMessage: async (data:string)=> {
-                 //mlog('🐞测试'  ,  data )  ;
-                 if(data=='[DONE]') opt.onMessage({text:'',isFinish:true})
-                 else {
-                    const obj= JSON.parse(data );
-                    opt.onMessage({text:obj.choices[0].delta?.content??'' ,isFinish:obj.choices[0].finish_reason!=null })
-                 }
-            },
-            onError(e ){
-                //console.log('eee>>', e )
-                mlog('❌未错误',e    )
-                opt.onError && opt.onError(e)
-            },
-            body:JSON.stringify(body)
-        });
-     } catch (error ) {
-        mlog('❌未错误2',error  )
-        opt.onError && opt.onError(error)
-     }
+            await fetchSSE( gptGetUrl('/v1/chat/completions'),{
+                method: 'POST',
+                headers: headers,
+                signal:opt.signal,
+                onMessage: async (data:string)=> {
+                    //mlog('🐞测试'  ,  data )  ;
+                    if(data=='[DONE]') opt.onMessage({text:'',isFinish:true})
+                    else {
+                        const obj= JSON.parse(data );
+                        opt.onMessage({text:obj.choices[0].delta?.content??'' ,isFinish:obj.choices[0].finish_reason!=null })
+                    }
+                },
+                onError(e ){
+                    //console.log('eee>>', e )
+                    mlog('❌未错误',e    )
+                    opt.onError && opt.onError(e)
+                },
+                body:JSON.stringify(body)
+            });
+        } catch (error ) {
+            mlog('❌未错误2',error  )
+            opt.onError && opt.onError(error)
+        }
+    }else{ 
+        try {
+            mlog('🐞非流输出',body  )
+            opt.onMessage({text: t('mj.thinking') ,isFinish: false })
+            let obj :any= await gptFetch( '/v1/chat/completions',body  )
+            //mlog('结果 >>',obj   )
+            opt.onMessage({text:obj.choices[0].message.content??'' ,isFinish: true ,isAll:true})
+            
+        } catch (error ) {
+            mlog('❌未错误2',error  )
+            opt.onError && opt.onError(error)
+        }
+    }
 }
 
 export const getInitChat = (txt:string )=>{
@@ -432,7 +509,7 @@ export const  gptUsage=async ()=>{
 
 }
 
-export const openaiSetting= ( q:any )=>{
+export const openaiSetting= ( q:any,ms:MessageApiInjection )=>{
     //mlog()
     mlog('setting', q )
     if(q.settings){
@@ -442,9 +519,28 @@ export const openaiSetting= ( q:any )=>{
             const url = obj.url ?? undefined;
             const key = obj.key ?? undefined;
             //let setQ= { }
-            gptServerStore.setMyData(  {OPENAI_API_BASE_URL:url, MJ_SERVER:url, OPENAI_API_KEY:key,MJ_API_SECRET:key } )
+            gptServerStore.setMyData(  {
+                OPENAI_API_BASE_URL:url, 
+                MJ_SERVER:url, 
+                SUNO_SERVER:url,
+                LUMA_SERVER:url,
+                RUNWAY_SERVER:url,
+                VIGGLE_SERVER:url,
+                IDEO_SERVER:url,
+                KLING_SERVER:url,
+                
+                OPENAI_API_KEY:key,
+                MJ_API_SECRET:key, 
+                SUNO_KEY:key,
+                LUMA_KEY:key,
+                RUNWAY_KEY:key,
+                VIGGLE_KEY:key,
+                IDEO_KEY:url,
+                KLING_KEY:url,
+             } )
             blurClean();
             gptServerStore.setMyData( gptServerStore.myData );
+            ms.success("设置服务端成功！")
             
         } catch (error) {
             
@@ -502,7 +598,7 @@ const getModelMax=( model:string )=>{
         return 16;
     }else if( model.indexOf('32k')>-1  ){
         return 32;
-    }else if( model.indexOf('gpt-4-turbo')>-1||  model.indexOf('gpt-4o')>-1 ){
+    }else if( model.indexOf('gpt-4-turbo')>-1||  model.indexOf('gpt-4o')>-1 ||   model.indexOf('o1-')>-1){
         return 128; 
     }else if( model.indexOf('64k')>-1  ){
         return 64;
@@ -554,7 +650,6 @@ export const getHistoryMessage= async (dataSources:Chat.Chat[],loadingCnt=1 ,sta
                let fileBase64= JSON.parse(str) as string[];
                let arr =  fileBase64.filter( (ff:string)=>ff.indexOf('http')>-1);
                if(arr.length>0) content = arr.join(' ')+' '+ content ;
-
                mlog(t('mjchat.attr') ,o.opt.images[0] , content );
             }catch(ee){
             }

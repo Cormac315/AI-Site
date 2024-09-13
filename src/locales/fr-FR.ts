@@ -60,6 +60,7 @@ export default {
         avatarLink: 'Lien de l\'Avatar',
         name: 'Nom',
         description: 'Description',
+        backgroundImage: 'Image de Fond',
         role: 'Rôle',
         temperature: 'Température',
         top_p: 'Top_p',
@@ -188,8 +189,37 @@ export default {
         "micWhisper": "Reconnaissance vocale chuchotement",
         "micAsr": "Reconnaissance instantanée",
         "micRec": "Commencer l'enregistrement, s'il vous plaît parlez ! Il s'arrêtera automatiquement s'il n'y a pas de son pendant 2 secondes.",
-        "micRecEnd": "L'enregistrement est terminé"
+        "micRecEnd": "L'enregistrement est terminé",
 
+        subtle: 'Haute définition 2x'
+        ,creative: 'Haute définition 2x. Créatif'
+        ,gpt_gx: 'Les GPT utilisent g-*',
+
+        "ideoabout": "À propos d'Ideogram",
+        "ideoserver": "Serveur Ideogram",
+        "ideokeyPlaceholder": "Clé API pour Ideogram (optionnelle)",
+        "ideopls": "Invites de description d'image",
+        "nohead": "Exclut",
+
+        klingabout: 'Kling À propos',
+        klingserver: 'Adresse API Kling',
+        klingkeyPlaceholder: 'Clé API Kling (facultatif)',
+        klingkey: 'Clé Kling',
+        mode: 'Mode',
+        duration: 'Durée',
+        negative_prompt: 'Mettez le texte sans objets ici',
+        std: 'Haute performance',
+        pro: 'Haute qualité',
+        needImg: 'Veuillez télécharger une image de référence pour qu’elle prenne effet !',
+        seed: 'Numéro de graine 1~2147483647',
+        klingInfo: 'Description : <li>1. Haute qualité coûte 3,5 fois le prix</li> <li>2. 10 secondes coûtent 2 fois le prix</li> <li>3. La dernière image doit avoir une image de référence pour prendre effet</li>'
+
+        ,"camera_type": "Objectif",
+        "cnull": "Correspondance intelligente",
+        "down_back": "Descendre et zoomer",
+        "forward_up": "Avancer et monter",
+        "right_turn_forward": "Tourner à droite et avancer",
+        "left_turn_forward": "Tourner à gauche et avancer"
     },
     "mjset": {
         "server": "Serveur",
@@ -279,6 +309,10 @@ export default {
         "no1m": "La taille de l'image ne peut pas dépasser 1 Mo",
         "imgExt": "Les images ne supportent que les formats jpg, gif, png, jpeg",
         "setSync": "Synchroniser Midjourney et Suno",
+        "addGPTS": "Ajouter des GPTs",
+        "addPlaceholder": "Collez le GID des GPTs ici ou collez directement le lien des GPTs",
+        "gidError": "GID valide introuvable, veuillez remplir à nouveau",
+        "success3": "GPTs ajoutés avec succès !"
     },
 	draw: {
 		qualityList: {
@@ -350,6 +384,7 @@ export default {
 		},
 		versionList: {
 			mjV6: "MJ V6",
+			mjV61: "MJ V6.1",
 			mjV52: "MJ V5.2",
 			mjV51: "MJ V5.1",
 			nijiV6: "Niji V6",
@@ -393,7 +428,63 @@ export default {
     "menuinfo": "Création musicale Suno",
     "server": "Point de terminaison de l'API Suno",
     "serverabout": "Lié à Suno",
-    "setOpenKeyPlaceholder": "Clé associée pour l'API Suno ; facultatif"
+    "setOpenKeyPlaceholder": "Clé associée pour l'API Suno ; facultatif",
+
+    upMps: 'Télécharger l\'audio',
+    extend: 'Étendre',
+    extendFrom: 'Étendre depuis',
+    extendAt: 'Commencer l\'extension à',
+    fail: 'Échec',
+    info: 'Instructions :<br>La durée de l\'audio téléchargé doit être comprise entre 6s et 60s'
 
    }
+   ,video:{
+    "menu": "Vidéos",
+    "menuinfo": "Création de vidéos Luma et autres",
+    "descpls": "Description de création de vidéos",
+    "lumaabout": "À propos de Luma",
+    "lumaserver": "Adresse de l'API Luma",
+    "setOpenKeyPlaceholder": "Clé API Luma, facultatif",
+    "generate": "Générer la vidéo",
+    "nodata": "Aucune vidéo disponible, veuillez d'abord générer !",
+    "selectimg": "Sélectionner une image",
+    "clear": "Effacer",
+    "plsInput": "Veuillez saisir du contenu !",
+    "submitSuccess": "Soumis avec succès !",
+    "process": "Génération de la vidéo...",
+    "repeat": "Réessayer",
+    "lumainfo": "Explication : <ul><li>1. Les vidéos de démonstration Pro et relax ont des liens avec des filigranes.</li><li>2. La version Pro sans filigrane nécessite d'obtenir le lien de téléchargement via le bouton 'Télécharger'.</li><li>3. Les liens pour les versions Pro sont limités dans le temps ; veuillez sauvegarder le fichier MP4 localement dès que possible.</li><li>4. Pour les versions Pro, sauvegardez le fichier MP4 localement dans les 30 minutes suivant la génération, car le canal peut être bloqué ou arrêté.</li><li>5. Si le lien de téléchargement pour les versions Pro est invalide, un lien vidéo avec filigrane sera fourni.</li></ul>",
+    "runwayabout": "Lié à Runway",
+    "runwayserver": "Adresse de l'API Runway",
+    "setOpenKeyPlaceholder2": "Clé API Runway, facultative",
+    "endImg": "Image de fin",
+    "runwayinfo": "Explication : <ul><li>1. Les images et vidéos de Runway ont une durée de validité.</li><li>2. Veuillez sauvegarder le fichier MP4 localement dans les 30 minutes suivant la génération de la vidéo.</li></ul>",
+    "nosup": "Non pris en charge temporairement",
+    "rwgen2": "Version : Gen-2, rentable",
+    "rwgen3": "Version : Gen-3 Alpha",
+    "repeat2":"Expired.Reget"
+    },
+    dance:{
+        menu: "Danse",
+        menuinfo: "Créez des vidéos de danse avec Viggle et d'autres.",
+        character: "Personnage",
+        viggleabout: "À propos de Viggle",
+        viggleserver: "Adresse API Viggle",
+        setOpenKeyPlaceholder: "Clé API Viggle, facultatif",
+        info: "Instructions :<br>1. Les images de personnage devraient de préférence être des photos en pied.<br>2. Les vidéos de modèles de danse devraient être des vidéos personnelles, pas des danses de groupe.",
+        model: "Modèle",
+        bgw: "Arrière-plan blanc",
+        bgg: "Arrière-plan vert",
+        bgmoban: "Arrière-plan du modèle",
+        bgrole: "Arrière-plan du personnage",
+        gring: "En cours de génération...",
+        uprolefirst: "Veuillez d'abord télécharger l'image du personnage",
+        uprolefail: "Échec du téléchargement",
+        upvideo: "+ Télécharger la vidéo de modèle de danse",
+        usevideo: "+ Utiliser le modèle officiel",
+        moban: "Modèle de danse",
+        moban2: "Nom du modèle",
+        use: "Utiliser"
+    }
+
   }

@@ -60,6 +60,7 @@ export default {
         avatarLink: 'Avatar Bağlantısı',
         name: 'Ad',
         description: 'Açıklama',
+        backgroundImage: 'Arka Plan',
         role: 'Rol',
         temperature: 'Sıcaklık',
         top_p: 'Top_p',
@@ -188,7 +189,37 @@ export default {
         "micWhisper": "Fısıltı konuşma tanıma",
         "micAsr": "Anında tanıma",
         "micRec": "Kayıt başlat, lütfen konuşun! 2 saniye boyunca ses yoksa otomatik olarak duracaktır.",
-        "micRecEnd": "Kayıt sona erdi"
+        "micRecEnd": "Kayıt sona erdi",
+
+        subtle: 'Haute définition 2x'
+        ,creative: 'Haute définition 2x. Créatif'
+        ,gpt_gx: 'Les GPT utilisent g-*',
+
+        "ideoabout": "Ideogram Hakkında",
+        "ideoserver": "Ideogram Sunucusu",
+        "ideokeyPlaceholder": "Ideogram için API Anahtarı (isteğe bağlı)",
+        "ideopls": "Görüntü açıklama ipuçları",
+        "nohead": "Dahil değil",
+
+        klingabout: 'Kling Hakkında',
+        klingserver: 'Kling API Adresi',
+        klingkeyPlaceholder: 'Kling API Anahtarı (isteğe bağlı)',
+        klingkey: 'Kling Anahtarı',
+        mode: 'Mod',
+        duration: 'Süre',
+        negative_prompt: 'Nesne içermeyen metni buraya yerleştirin',
+        std: 'Yüksek Performans',
+        pro: 'Yüksek Kalite',
+        needImg: 'Etki etmesi için lütfen bir referans resmi yükleyin!',
+        seed: 'Tohum numarası 1~2147483647',
+        klingInfo: 'Açıklama: <li>1. Yüksek kalite fiyatın 3.5 katıdır</li> <li>2. 10 saniye fiyatın 2 katıdır</li> <li>3. Son kare etkili olması için bir referans resmine sahip olmalıdır</li>'
+    
+        ,"camera_type": "Lens",
+        "cnull": "Akıllı eşleştirme",
+        "down_back": "Aşağı ve geri git",
+        "forward_up": "İleri it ve yukarı kaldır",
+        "right_turn_forward": "Sağa dön ve ileri git",
+        "left_turn_forward": "Sola dön ve ileri git"
     },
     "mjset": {
         "server": "Sunucu",
@@ -277,7 +308,11 @@ export default {
         "add2more": "Lütfen iki veya daha fazla resim ekleyin",
         "no1m": "Resim boyutu 1M'yi aşamaz",
         "imgExt": "Resimler sadece jpg, gif, png, jpeg formatlarını destekler",
-        "setSync": "Midjourney ve Suno'yu senkronize et"
+        "setSync": "Midjourney ve Suno'yu senkronize et",
+        "addGPTS": "GPT'ler Ekle",
+        "addPlaceholder": "GPT'lerin GID'sini buraya yapıştırın veya GPT'lerin bağlantısını doğrudan yapıştırın",
+        "gidError": "Geçerli GID bulunamadı, lütfen tekrar doldurun",
+        "success3": "GPT'ler başarıyla eklendi!"
     },
 	draw: {
 		qualityList: {
@@ -349,6 +384,7 @@ export default {
 		},
 		versionList: {
 			mjV6: "MJ V6",
+			mjV61: "MJ V6.1",
 			mjV52: "MJ V5.2",
 			mjV51: "MJ V5.1",
 			nijiV6: "Niji V6",
@@ -391,7 +427,62 @@ export default {
     "menuinfo": "Suno Müzik Oluşturma",
     "server": "Suno API Uç Noktası",
     "serverabout": "Suno İlgili",
-    "setOpenKeyPlaceholder": "Suno API için İlgili Anahtar; isteğe bağlı"
-   }
+    "setOpenKeyPlaceholder": "Suno API için İlgili Anahtar; isteğe bağlı",
 
+    upMps: 'Ses yükle',
+    extend: 'Genişlet',
+    extendFrom: 'Şundan genişlet',
+    extendAt: 'Genişletmeyi başlat',
+    fail: 'Başarısız',
+    info: 'Açıklamalar:<br>Yüklenen sesin süresi 6 saniye ile 60 saniye arasında olmalıdır'
+   }
+   ,video:{
+    "menu": "Videolar",
+    "menuinfo": "Luma ve diğer video oluşturma",
+    "descpls": "Video oluşturma açıklaması",
+    "lumaabout": "Luma Hakkında",
+    "lumaserver": "Luma API adresi",
+    "setOpenKeyPlaceholder": "Luma API anahtarı, isteğe bağlı",
+    "generate": "Video Oluştur",
+    "nodata": "Mevcut video yok, lütfen önce oluşturun!",
+    "selectimg": "Resim Seç",
+    "clear": "Temizle",
+    "plsInput": "Lütfen içerik girin!",
+    "submitSuccess": "Başarıyla gönderildi!",
+    "process": "Video oluşturuluyor...",
+    "repeat": "Yeniden dene",
+    "lumainfo": "Açıklama: <ul><li>1. Pro ve rahat demo videoları su işareti olan bağlantılara sahiptir.</li><li>2. Pro su işaretsiz sürüm, 'İndir' düğmesi aracılığıyla indirme bağlantısını almayı gerektirir.</li><li>3. Pro sürümler için bağlantılar zaman sınırlıdır; lütfen MP4 dosyasını yerel olarak zamanında kaydedin.</li><li>4. Pro sürümler için, 30 dakika içinde MP4 dosyasını yerel olarak kaydedin, çünkü kanal engellenebilir veya durdurulabilir.</li><li>5. Pro sürümleri için indirme bağlantısı geçersizse, su işareti olan video bağlantısı sağlanacaktır.</li></ul>",
+    "runwayabout": "Runway ile İlgili",
+    "runwayserver": "Runway API Adresi",
+    "setOpenKeyPlaceholder2": "Runway API anahtarı, isteğe bağlı",
+    "endImg": "Son kare",
+    "runwayinfo": "Açıklama: <ul><li>1. Runway görüntüleri ve videoları geçerlilik süresine sahiptir.</li><li>2. Lütfen video oluşturduktan sonra 30 dakika içinde MP4 dosyasını yerel olarak kaydedin.</li></ul>",
+    "nosup": "Geçici olarak desteklenmiyor",
+    "rwgen2": "Sürüm: Gen-2, maliyet etkin",
+    "rwgen3": "Sürüm: Gen-3 Alpha",
+    "repeat2":"Expired.Reget"
+    }
+    ,
+    dance:{
+        menu: "Dans",
+        menuinfo: "Viggle ve diğerleri ile dans videoları oluşturun.",
+        character: "Karakter",
+        viggleabout: "Viggle Hakkında",
+        viggleserver: "Viggle API Endpoint",
+        setOpenKeyPlaceholder: "Viggle API anahtarı, isteğe bağlı",
+        info: "Yönergeler:<br>1. Karakter görüntüleri tercihen tam boy fotoğraflar olmalıdır.<br>2. Dans şablonu videoları kişisel videolar olmalı, grup dansları değil.",
+        model: "Model",
+        bgw: "Beyaz Arka Plan",
+        bgg: "Yeşil Arka Plan",
+        bgmoban: "Şablon Arka Planı",
+        bgrole: "Karakter Arka Planı",
+        gring: "Oluşturuluyor...",
+        uprolefirst: "Lütfen önce karakter resmi yükleyin",
+        uprolefail: "Yükleme başarısız oldu",
+        upvideo: "+ Şablon Dans Videosu Yükle",
+        usevideo: "+ Resmi Şablonu Kullan",
+        moban: "Dans Şablonu",
+        moban2: "Şablon Adı",
+        use: "Kullan"
+    }
   }

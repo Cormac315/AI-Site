@@ -15,7 +15,7 @@ import whisperText from '@/views/mj/whisperText.vue'
 import MjTextAttr from '@/views/mj/mjTextAttr.vue'
 import aiTextSetting from '@/views/mj/aiTextSetting.vue'
 import aiSetAuth from '@/views/mj/aiSetAuth.vue'
-import { isApikeyError, isAuthSessionError, isTTS } from '@/api'
+import { isApikeyError, isAuthSessionError, isDallImageModel, isTTS, mlog } from '@/api'
 
 interface Props {
   inversion?: boolean
@@ -51,7 +51,7 @@ mdi.use(mdKatex, { blockClass: 'katexmath-block rounded-md p-[10px]', errorColor
 const wrapClass = computed(() => {
   return [
     'text-wrap',
-    'min-w-[20px]',
+    'min-w-[20px]','max-w-[810px]',
     'rounded-md',
     isMobile.value ? 'p-2' : 'px-3 py-2',
     props.inversion ? 'bg-[#d2f9d1]' : 'bg-[#f4f6f8]',
@@ -62,9 +62,17 @@ const wrapClass = computed(() => {
 })
 
 const text = computed(() => {
-  const value = props.text ?? ''
-  if (!props.asRawText)
+  let value = props.text ?? ''
+  if (!props.asRawText){
+    value = value.replace(/\\\( *(.*?) *\\\)/g, '$$$1$$');
+    //value = value.replace(/\\\((.*?)\\\)/g, '$$$1$$');
+    value = value.replace(/\\\[ *(.*?) *\\\]/g, '$$$$$1$$$$');
+    //
+    value= value.replaceAll('\\[',"$$$$")
+    value= value.replaceAll('\\]',"$$$$")   
+    //mlog('replace', value)
     return mdi.render(value)
+  }
   return value
 })
 
@@ -120,7 +128,7 @@ onUnmounted(() => {
         <aiTextSetting v-if="!inversion && isApikeyError(text)"/>
         <aiSetAuth v-if="!inversion && isAuthSessionError(text)" />
           
-        <dallText :chat="chat" v-if="chat.model=='dall-e-3' || chat.model=='dall-e-2'" class="whitespace-pre-wrap" />
+        <dallText :chat="chat" v-if=" chat.model && chat.model?.indexOf('chat') == -1 && isDallImageModel( chat.model ) " class="whitespace-pre-wrap" />
         <mjText v-if="chat.mjID" class="whitespace-pre-wrap" :chat="chat" :mdi="mdi"></mjText>
         <ttsText v-else-if="chat.model && isTTS(chat.model) && chat.text=='ok'" :chat="chat"/>
         <template v-else>

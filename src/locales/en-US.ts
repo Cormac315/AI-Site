@@ -191,6 +191,37 @@ export default {
   "micAsr": "Instant recognition",
   "micRec": "Start recording, please speak! It will automatically stop if there is no sound for 2 seconds.",
   "micRecEnd": "Recording has ended"
+
+  ,subtle: 'High definition 2x'
+  ,creative: 'High definition 2x. Creative'
+  ,gpt_gx: 'GPTs use g-*',
+
+  "ideoabout": "About Ideogram",
+  "ideoserver": "Ideogram Server",
+  "ideokeyPlaceholder": "API Key for Ideogram (optional)",
+  "ideopls": "Image description prompts",
+  "nohead": "Excludes",
+
+  klingabout: 'Kling About',
+  klingserver: 'Kling API Address',
+  klingkeyPlaceholder: 'Kling API Key (optional)',
+  klingkey: 'Kling Key',
+  mode: 'Mode',
+  duration: 'Duration',
+  negative_prompt: 'Place text without objects here',
+  std: 'High Performance',
+  pro: 'High Quality',
+  needImg: 'Please upload a reference image for it to take effect!',
+  seed: 'Seed number 1~2147483647',
+  klingInfo: 'Description: <li>1. High Quality is 3.5 times the price</li> <li>2. 10s is 2 times the price</li> <li>3. The last frame must have a reference image to take effect</li>'
+  
+  ,"camera_type": "Lens",
+  "cnull": "Smart Matching",
+  "down_back": "Move Down and Zoom Out",
+  "forward_up": "Push Forward and Move Up",
+  "right_turn_forward": "Turn Right and Push Forward",
+  "left_turn_forward": "Turn Left and Push Forward"
+
   },
   "mjset": {
     "server": "Server",
@@ -280,6 +311,11 @@ export default {
     "no1m": "Image size cannot exceed 1M",
     "imgExt": "Images support only jpg, gif, png, jpeg formats"
     ,"setSync": "Synchronize Midjourney and Suno"
+
+    ,"addGPTS": "Add GPTs",
+    "addPlaceholder": "Paste the GID of the GPTs here or directly paste the link of the GPTs",
+    "gidError": "Valid GID not found, please fill in again",
+    "success3": "GPTs added successfully!"
   },
 
 	draw: {
@@ -352,6 +388,7 @@ export default {
 		},
 		versionList: {
 			mjV6: "MJ V6",
+			mjV61: "MJ V6.1",
 			mjV52: "MJ V5.2",
 			mjV51: "MJ V5.1",
 			nijiV6: "Niji V6",
@@ -397,6 +434,70 @@ export default {
     "server": "Suno API Endpoint",
     "serverabout": "Suno Related",
     "setOpenKeyPlaceholder": "Related KEY for Suno API; optional"
+
+    ,upMps:'Upload'
+    ,extend:'Extend'
+    ,extendFrom:'Extend From'
+    ,extendAt:'Extend at'
+    ,fail:'Fail'
+    ,info:'Note: <br> Uploaded audio must be between 6 seconds and 60 seconds in duration.'
+  }
+   ,video: {
+    menu: "Videos",
+    menuinfo: "Luma and other video generate",
+    descpls: "Video generate description",
+    lumaabout: "About Luma",
+    lumaserver: "Luma API endpoint",
+    setOpenKeyPlaceholder: "Key for Luma API, optional",
+    generate: "Generate video",
+    nodata: "No available videos, please generate first!",
+    selectimg: "Select image",
+    clear: "Clear",
+    plsInput: "Please input content!",
+    submitSuccess: "Submitted successfully!",
+    process: "Video generating...",
+    repeat: "Get again",
+    pending: 'Status: Queued',
+    processing: 'Status: Processing',
+    download: 'Download',
+    extend: 'Extend',
+
+    "lumainfo": "Explanation: <ul><li>1. Pro and relax demo videos have watermarked links.</li><li>2. Pro without watermark requires obtaining the download link through the 'Download' button.</li><li>3. The links for Pro versions are time-limited; please save the MP4 file locally promptly.</li><li>4. For Pro versions, save the MP4 file locally within 30 minutes after generation, as the channel may be blocked or discontinued.</li><li>5. If the download link for Pro versions is invalid, a watermarked video link will be provided.</li></ul>",
+    "runwayabout": "Runway Related",
+    "runwayserver": "Runway API Endpoint",
+    "setOpenKeyPlaceholder2": "Runway API key, optional",
+    "endImg": "End Frame Image",
+    "runwayinfo": "Explanation: <ul><li>1. Runway images and videos have expiration times.</li><li>2. Please save the MP4 file locally within 30 minutes after generating the video.</li></ul>",
+    "nosup": "Not supported temporarily",
+    "rwgen2": "Version: Gen-2, cost-effective",
+    "rwgen3": "Version: Gen-3 Alpha",
+    "repeat2":"Expired.Reget",
+
+    rwgen3turbo:'Version: Gen-3 Alpha Turbo',
+    gen3a_turbo_img:'Gen-3 Alpha Turbo must image',
+
+  },
+  dance:{
+    menu: "Dance",
+    menuinfo: "Create dance videos with Viggle and others.",
+    character: "Character",
+    viggleabout: "About Viggle",
+    viggleserver: "Viggle API Endpoint",
+    setOpenKeyPlaceholder: "Viggle API key, optional",
+    info: "Instructions:<br>1. Character images should preferably be full-body photos.<br>2. Dance template videos should be personal videos, not group dances.",
+    model: "Model",
+    bgw: "White Background",
+    bgg: "Green Background",
+    bgmoban: "Original Background",
+    bgrole: "Character Background",
+    gring: "Generating...",
+    uprolefirst: "Please upload character image first",
+    uprolefail: "Upload failed",
+    upvideo: "+ Upload Template Dance Video",
+    usevideo: "+ Use Official Template",
+    moban: "Dance Template",
+    moban2: "Template Name",
+    use: "Use"
   }
 
 
