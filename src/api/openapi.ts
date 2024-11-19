@@ -39,6 +39,7 @@ export const KnowledgeCutOffDate: Record<string, string> = {
   "claude-3-sonnet-20240229": "2023-08",
   "claude-3-haiku-20240307": "2023-08",
   "claude-3-5-sonnet-20240620": "2024-04",
+  "claude-3-5-sonnet-20241022": "2024-04",
   "gemini-pro": "2023-12",
   "gemini-pro-vision": "2023-12",
   "gemini-pro-1.5": "2024-04"
@@ -528,6 +529,8 @@ export const openaiSetting= ( q:any,ms:MessageApiInjection )=>{
                 VIGGLE_SERVER:url,
                 IDEO_SERVER:url,
                 KLING_SERVER:url,
+                PIKA_SERVER:url,
+                UDIO_SERVER:url,
                 
                 OPENAI_API_KEY:key,
                 MJ_API_SECRET:key, 
@@ -535,8 +538,10 @@ export const openaiSetting= ( q:any,ms:MessageApiInjection )=>{
                 LUMA_KEY:key,
                 RUNWAY_KEY:key,
                 VIGGLE_KEY:key,
-                IDEO_KEY:url,
-                KLING_KEY:url,
+                IDEO_KEY:key,
+                KLING_KEY:key,
+                PIKA_KEY:key,
+                UDIO_KEY:key,
              } )
             blurClean();
             gptServerStore.setMyData( gptServerStore.myData );

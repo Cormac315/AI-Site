@@ -221,6 +221,44 @@ export default {
   "forward_up": "Push Forward and Move Up",
   "right_turn_forward": "Turn Right and Push Forward",
   "left_turn_forward": "Turn Left and Push Forward"
+  ,kling:'Kling'
+
+  ,rttab: 'RealTime',
+  rtinfo: 'Realtime voice conversation service',
+  rtsetting: 'Please set the server. Currently, Realtime only supports remote services; for local services, please contact the author.',
+  rjcloded: 'Connection has been disconnected',
+  checkkey: 'Please check if the API key is correct',
+  rtsuccess: 'Connection is normal, maintaining the call',
+  rtservererror: 'WebSocket connection server error!',
+  rtservererror2: 'Recording is not supported, it may be due to device reasons!',
+  rtconecting: 'Connecting to the server'
+  ,confirmDelete:'Are you sure?',
+  pikaabout: 'About Pika',
+  pikaserver: 'Pika API Address',
+  pikakeyPlaceholder: 'Pika API Key (optional)',
+  createFail: 'Creation failed',
+  selecteff: 'Reference Effect',
+
+  
+  "udioabout": "About Udio",
+  "udiokeyPlaceholder": "Udio API Key (optional)",
+  "udioserver": "Udio API Address",
+  "ud_prompt": "Prompt",
+  "ud_prompt_pls": "Prompt: Description, Style",
+  "ud_ly_write": "Write-Lyrics",
+  "ud_ly_auto": "Auto",
+  "ud_ly_null": "Instrumental",
+  "ud_v32": "Affordable",
+  "ud_v130": "Long Duration",
+  "ud_info": "Note: <ul><li>1. Udio-32 has a short duration</li><li>2. Udio-130 is twice the price of Udio-32</li><li>3. The prompt can include style, description, etc.</li></ul>",
+  "ud_fail": "Failed to generate this song!",
+  "ud_doing": "Cannot play while generating",
+  "ud_continuation": "Continuation",
+  "ud_precede": "Preced",
+  "upImg2": '<span><b>Upload Image</b><br/>This model supports image recognition<br>Note: There will be additional image fees<br/>Formats: jpeg jpg png gif</span><p>Supports drag and drop</p> <p class="pt-2"><b>Upload MP3 MP4</b> <br>Will automatically call the whisper-1 model<br>Formats include: mp3 mp4 mpeg mpga m4a wav webm</p>',
+  "rml_info": "Note:<ul><li>1. Must include an image</li><li>2. The model only has one gen3a_turbo</li><li>3. The price for 10s is double that of 5s</li></ul>",
+  "rml_heng": "Landscape",
+  "rml_shu": "Portrait"
 
   },
   "mjset": {

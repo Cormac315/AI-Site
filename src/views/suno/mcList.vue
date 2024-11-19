@@ -7,8 +7,9 @@ import {   sunoStore, SunoMedia} from '@/api/sunoStore';
 import playui from './playui.vue';
 import { homeStore } from '@/store';
 import { mlog } from '@/api';
-import {NEmpty, NImage ,useMessage} from "naive-ui"
+import {NEmpty, NImage ,useMessage,NPopconfirm} from "naive-ui"
 import { FeedTask } from '@/api/suno';
+import { t } from '@/locales';
 
 const list= ref<SunoMedia[]>([]);
 const csuno= new sunoStore()
@@ -28,7 +29,7 @@ const getNowCls=(v:any)=>{
 }
 const goPlay=(v:SunoMedia)=>{
     if(v.status=='error'){
-        ms.info("这首歌生成失败！")
+        ms.info( t('mj.ud_fail'))
         return ;
     }
     st.value.playid=v.id
@@ -73,6 +74,15 @@ const update = (v:any )=>{
      sp.value=v
       
 }
+const deleteGo=(v:SunoMedia)=>{
+    mlog('deleteGo', v)
+   
+    if(csuno.delete(v)) {
+        ms.success( t('common.deleteSuccess'))
+        initLoad();
+    }
+
+}
 initLoad();
 </script>
 <template>
@@ -92,7 +102,7 @@ initLoad();
                 </n-image>
                 <div class="absolute top-0 right-0 w-full h-full flex justify-center items-center" v-if="st.playid==item.id">
                     <SvgIcon icon="mdi:pause-circle-outline" class="text-[40px] text-[#fff]" v-if="sp.status=='pause'"></SvgIcon>
-                    <SvgIcon icon="mdi:play-circle-outline" class="text-[40px] text-[#fff]" v-else></SvgIcon>
+                    <SvgIcon icon="svg-spinners:bars-scale-middle" class="text-[40px] text-[#fff]" v-else></SvgIcon>
                 </div>
             </template>
             <template v-else>
@@ -129,6 +139,10 @@ initLoad();
                     <div @click="extend(item)" class="text-[8px] flex items-center border-[1px] border-gray-500/30 px-1 list-none rounded-md cursor-pointer">{{ $t('suno.extend') }}</div>
                 </template>
                 <div class="text-[8px] flex items-center border-[1px] border-gray-500/30 px-1 list-none rounded-md" v-if="item.major_model_version"> {{item.major_model_version}}</div>
+                <n-popconfirm @positive-click="()=>deleteGo(item)" placement="bottom">
+                    <template #trigger><SvgIcon icon="mdi:delete" class="cursor-pointer"   /></template>
+                     {{ $t('mj.confirmDelete') }}
+                </n-popconfirm>
                 <SvgIcon icon="mdi:play-circle-outline" class="cursor-pointer"  @click="goPlay( item )" />
                 <a :href="item.audio_url" download  target="_blank"><SvgIcon icon="mdi:download" class="cursor-pointer"/></a>
             </div>

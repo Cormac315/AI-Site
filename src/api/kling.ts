@@ -34,7 +34,7 @@ export const  getUrl=(url:string)=>{
     url= url.replaceAll('/pro','')
     if(gptServerStore.myData.KLING_SERVER  ){
       
-        return `${ gptServerStore.myData.RUNWAY_SERVER}${pro_prefix}/kling${url}`;
+        return `${ gptServerStore.myData.KLING_SERVER}${pro_prefix}/kling${url}`;
     }
     return `${pro_prefix}/kling${url}`;
 }
