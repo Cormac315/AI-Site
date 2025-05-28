@@ -1,6 +1,92 @@
 # 功能升级日志
 
 #  计划 
+# 2.24.5
+- 😄 新增：pix 运镜
+
+# 2.24.4
+- 🐞 修复：oref 空 导致 trim错误
+
+# 2.24.3
+- 🐞 改进：mj 默认为 v7
+- 🐞 改进：mj 支持 oref 全面参考 
+
+# 2.24.2
+- 😄 新增： suno `v4.5`  model 为 `chirp-auk`
+# 2.24.1
+- 😄 新增：gpt-image-1 dall.e-2 支持 v1/image/edit 支持多图
+- 🐞 改进：默认上传改为5M
+
+# 2.23.10
+
+- 😄 新增：gpt-image-1 这个是dall-e格式
+- 😄 新增：pixverse 的 `v4`版本
+
+# 2.23.9
+- 😄 新增：rumwayml 支持 gen4_turbo
+
+# 2.23.8
+- 🐞 改进：识图默认放开都支持 只有gpt-3.5 已知不支持
+- 🐞 改进：服务端模型 支持搜索
+
+# 2.23.7
+- 😄 新增：模型 mj 7.0
+
+# 2.23.6
+- 🐞 修复：2.23.4依旧出现ds-R1不展示思考过程的问题 #611
+- 😄 新增：模型 从服务端的 /v1/models 拉起
+
+
+# 2.23.5
+- 😄 新增：`grok-3`,`grok-3-reasoner`,`grok-3-deepsearch` 模型
+- 😄 新增：`gpt-4.5-preview-2025-02-27`,`gpt-4.5-preview` 模型
+
+# 2.23.4
+- 🐞 修复：`deepseek-v3` `deepseek-r1` 识图处理，需要中转支持
+- 🐞 修复：`deepseek-r1` think 思考过程显示优化
+
+
+
+# 2.23.3
+- 😄 新增：`deepseek-v3` `deepseek-r1` 模型
+
+# 2.23.2
+- 😄 支持：Pixverse 模版特效
+- 😄 支持：kling 支持 model 选型 `v1` `v1.5` `v1.6`
+
+# 2.23.1
+- 🐞 修复：Pixverse 时长支持8s 而非10s
+- 😄 支持：Pixverse style风格
+- 🐞 修复：suno 后端转发目录使用 `/suno`
+
+# 2.22.10
+- 😄 支持：视频模型 Pixverse
+- 😄 支持：Pixverse 图片、前后帧、扩展
+
+# 2.22.9
+- 😄 新增：realtime 可设置模型 `gpt-4o-mini-realtime-preview-2024-12-17` `gpt-4o-realtime-preview-2024-12-17` `gpt-4o-realtime-preview-2024-10-01`
+# 2.22.8
+- 😄 新增：o1  o1-2024-12-17
+
+# 2.22.7
+- 😄 修改：suno upload 二次创作方式
+
+# 2.22.6
+- 😄 支持：viggle V3-Beta
+- 😄 支持：pika 2.0
+- 😄 新增：pika 3个效果
+
+# 2.22.5
+- 🐞 修改：suno默认版本为V4
+
+
+# 2.22.4
+- 🐞 修复：mj shorten
+- 🐞 修复：mj 图转文
+
+# 2.22.3
+- 😄 新增音乐：suno-v4
+- 😄 新增gpt模型：gpt-4o-2024-11-20
 # 2.22.2
 - 😄 新增：支持ruanway 官方api
 - 🐞 修复：模型识图表示
